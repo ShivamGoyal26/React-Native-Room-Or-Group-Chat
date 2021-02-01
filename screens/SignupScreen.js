@@ -1,10 +1,14 @@
-import React, { useState } from 'react';
+import React, { useState, useContext } from 'react';
 import { View, StyleSheet } from 'react-native';
-import { Title, IconButton } from 'react-native-paper';
+import { Title } from 'react-native-paper';
+import { AuthContext } from '../Navigation/AuthProvider';
 import FormInput from '../components/FormInput';
 import FormButton from '../components/FormButton';
 
 export default function SignupScreen({ navigation }) {
+
+  const { register } = useContext(AuthContext);
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -27,6 +31,7 @@ export default function SignupScreen({ navigation }) {
         title='Signup'
         modeValue='contained'
         labelStyle={styles.loginButtonLabel}
+        onPress={() => register(email, password)}
       />
       <FormButton
           title='Already Registered? Login here'

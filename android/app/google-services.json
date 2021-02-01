@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "672839629529",
+    "project_id": "fir-chat-app-updated",
+    "storage_bucket": "fir-chat-app-updated.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:672839629529:android:69ef5b6dd5c689952c5cc8",
+        "android_client_info": {
+          "package_name": "com.react_native_chat_updated"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "672839629529-dn93ebfqo7tnlvrdlgi0bm7ei3h5q955.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8QIlmbIE4_1BlHipfaon_Qry_ryFyuiM"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "672839629529-dn93ebfqo7tnlvrdlgi0bm7ei3h5q955.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
