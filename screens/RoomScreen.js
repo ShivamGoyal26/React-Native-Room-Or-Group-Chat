@@ -149,7 +149,8 @@ export default function RoomScreen({ route }) {
             user={{ _id: currentUser.uid }}
             renderBubble={renderBubble}
             placeholder="Type a message..."
-            showUserAvatar
+            showUserAvatar={true}
+            showAvatarForEveryMessage={true}
             alwaysShowSend
             renderSend={renderSend}
             scrollToBottom
