@@ -1,13 +1,10 @@
 import React from 'react';
 import { View, Text } from 'react-native';
+import Providers from './Navigation/index';
 
 const App = props => {
   return(
-    <View>
-      <Text>
-        This is the Main Screen
-      </Text>
-    </View>
+  <Providers />
   )
 }
 
