@@ -1,15 +1,20 @@
-import React from 'react';
+import React, {useContext} from 'react';
 import { createStackNavigator } from '@react-navigation/stack';
 import HomeScreen from '../screens/HomeScreen';
 import AddRoomScreen from '../screens/AddRoomScreen';
-// import { IconButton } from 'react-native-paper';
 import Entypo from 'react-native-vector-icons/Entypo';
+import RoomScreen from '../screens/RoomScreen';
+import { View } from 'react-native';
+import {AuthContext} from './AuthProvider';
+
+
 
 const Stack = createStackNavigator();
 const ChatAppStack = createStackNavigator();
 const ModalStack = createStackNavigator();
 
 function ChatApp() {
+  const { logout } = useContext(AuthContext);
   return (
     <ChatAppStack.Navigator
       screenOptions={{
@@ -25,16 +30,31 @@ function ChatApp() {
       <ChatAppStack.Screen
         name='Home'
         component={HomeScreen}
-        options={({ navigation }) => ({
+        options={({ navigation, route }) => ({
           headerRight: () => (
-            <Entypo
-            style={{marginRight: 5,}}
+            <View style={{flexDirection:'row'}}>
+              <Entypo
+              style={{ marginRight: 10, }}
               name='circle-with-plus'
-              size={28}
+              size={24}
               color='#ffffff'
               onPress={() => navigation.navigate('AddRoom')}
             />
+            <Entypo
+              style={{ marginRight: 10, }}
+              name='log-out'
+              size={24}
+              color='#ffffff'
+              onPress={() => logout()}
+            />
+            </View>
           ),
+        })}
+      />
+      <ChatAppStack.Screen name='Room'
+        component={RoomScreen}
+        options={({ route }) => ({
+          title: route.params.thread.name
         })}
       />
     </ChatAppStack.Navigator>
