@@ -15,16 +15,25 @@ export default function AddRoomScreen({ navigation }) {
 
     function handleButtonPress() {
         if (roomName.length > 0) {
-            firestore()
-                .collection('THREADS')
-                .add({
-                    name: roomName
-                })
-                .then(() => {
-                    navigation.navigate('Home');
-                });
+          firestore()
+            .collection('THREADS')
+            .add({
+              name: roomName,
+              latestMessage: {
+                text: `You have joined the room ${roomName}.`,
+                createdAt: new Date().getTime()
+              }
+            })
+            .then(docRef => {
+              docRef.collection('MESSAGES').add({
+                text: `You have joined the room ${roomName}.`,
+                createdAt: new Date().getTime(),
+                system: true
+              });
+              navigation.navigate('Home');
+            });
         }
-    }
+      }
 
     return (
         <View style={styles.rootContainer}>

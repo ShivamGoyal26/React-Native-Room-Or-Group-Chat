@@ -15,10 +15,15 @@ export default function HomeScreen({ navigation }) {
   useEffect(() => {
     const unsubscribe = firestore()
       .collection('THREADS')
+      .orderBy('latestMessage.createdAt', 'desc')
       .onSnapshot((querySnapshot) => {
         const data = querySnapshot.docs.map((documentSnapshot) => {
           return {
             _id: documentSnapshot.id,
+
+            latestMessage: {
+              text: ''
+            },
             // give defaults
             name: '',
             ...documentSnapshot.data(),
@@ -54,11 +59,12 @@ export default function HomeScreen({ navigation }) {
           >
             <List.Item
               title={item.name}
-              description='Item description'
+              // description='Item description'
               titleNumberOfLines={1}
               titleStyle={styles.listTitle}
               descriptionStyle={styles.listDescription}
               descriptionNumberOfLines={1}
+              description={item.latestMessage.text}
             />
           </TouchableOpacity>
         )}
